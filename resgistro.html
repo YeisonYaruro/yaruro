@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>resgistro</title>
+</head>
+
+<a href="tipoUser/administrador/administrador.php"><center><h1>Atras</h1></center></a>
+<center>
+<form action="registro.php" method="post">
+<table width="auto" border="0">
+  <tbody>
+  <tr>
+  	<td>Empresa de trabajo:</td>
+    <td><input type="text" name="empresaUsuaria" required/></td>
+    </tr>
+    <tr>
+      <td>Nombres:&nbsp;</td>
+      <td><input type="text" name="nombres" required/></td>
+    </tr>
+    <tr>
+      <td>Apellidos:</td>
+      <td><input type="text" name="apellidos" required/></td>
+    </tr>
+            <tr>
+      <td>Mail:&nbsp;</td>
+      <td><input type="text" name="mail" required/></td>
+    </tr>
+    <tr>
+      <td>Fecha de nacimiento:</td>
+      <td><input type="date" name="fechaDeNacimiento" required/></td>
+    </tr>
+    <tr>
+      <td>Estado civil:</td>
+      
+      <td>                      <select name="codEstadoCivil" class="form-control"  required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from estadocivil") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codEstadoCivil"].'">'.$regi["nombreEstadoCivil"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select>
+     			      			</td>
+    							</tr>
+    <tr>
+      <td>Direccion actual:</td>
+      
+      <td><input type="text" name="direccionActual" required</td>
+    </tr>
+    <tr>
+      <td>Ocupacion:</td>
+      <td><input type="text" name="ocupacion" required/></td>
+    </tr>
+    <tr>
+      <td>ARL:</td>
+      <td>						<select name="codARL" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from ARL") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codARL"].'">'.$regi["nombreARL"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select></td>
+    </tr>
+    <tr>
+      <td>Tipo de documento:</td>
+      <td><select name="tipoDocumento" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from documento") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codDocumento"].'">'.$regi["nombreDocumento"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select></td>
+    </tr>
+    <tr>
+      <td>Edad:</td>
+      <td><input type="text" name="edad" required/></td>
+    </tr>
+          <td>cantidad de hijos:</td>
+      <td><select name="numeroDeHijos" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from hijos") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codHijos"].'">'.$regi["numerosHijos"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select></td>
+    </tr>
+    <tr>
+      <td>Ciudad o municipio:</td>
+      <td><select name="codMunicipio" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from municipio") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codMunicipio"].'">'.$regi["nombreMunicipio"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select></td>
+    </tr>
+    <tr>
+      <td>Eps:</td>
+      <td><select name="codEps" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $estadocivil=mysqli_query($conexion,"select * from eps") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($regi=mysqli_fetch_array($estadocivil))
+                                {
+                                    echo '<option value="'.$regi["codEps"].'">'.$regi["nombreEps"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                        		</select></td>
+    </tr>
+    <tr>
+      <td>Fecha:</td>
+      <td><input type="date" name="fecha" required/></td>
+    </tr>
+    <tr>
+      <td>Lugar de nacimiento:</td>
+      <td><input type="text" name="lugarDenacimiento" required/></td>
+    </tr>
+    <tr>
+      <td>Genero:</td>
+      <td><select name="codGenero" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $genero=mysqli_query($conexion,"select * from genero") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($reg=mysqli_fetch_array($genero))
+                                {
+                                    echo '<option value="'.$reg["codGenero"].'">'.$reg["nombreGenero"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                            
+                        </select></td>
+    </tr>
+    <tr>
+      <td>Escolaridad:</td>
+      <td><select name="codEscolaridad" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $genero=mysqli_query($conexion,"select * from escolaridad") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($reg=mysqli_fetch_array($genero))
+                                {
+                                    echo '<option value="'.$reg["codEscolaridad"].'">'.$reg["nombreEscolaridad"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                            
+                        </select></td>
+    </tr>
+        <tr>
+      <td>Telefono:</td>
+      <td><input type="text" name="telefono" required/></td>
+    </tr>
+        <tr>
+      <td>Responsable:</td>
+      <td><input type="text" name="responsable" required/></td>
+    </tr>
+        <tr>
+      <td>parentesco:</td>
+      <td><input type="text" name="parentesco" required/></td>
+    </tr>
+        <tr>
+      <td>documento:</td>
+      <td><input type="text" name="documento" required/></td>
+    </tr>
+        <tr>
+      <td>Rol:</td>
+      <td><select name="rol" class="form-control" required>
+                                <?php
+								
+								// consulta los servicios de la base de datos
+								
+                                $conexion=mysqli_connect("localhost","root","","medical") or
+                                    die("Problemas con la conexión");
+                                
+                                $genero=mysqli_query($conexion,"select * from roles") or
+                                  die("Problemas en el select:".mysqli_error($conexion));
+                                
+                                while ($reg=mysqli_fetch_array($genero))
+                                {
+                                    echo '<option value="'.$reg["codRol"].'">'.$reg["nombreRol"].'</option>';
+                                }
+                                mysqli_close($conexion);
+                                ?>
+                            
+                        </select></td>
+    </tr>
+        <tr>
+      <td>usuario:</td>
+      <td><input type="text" name="usuario" required/></td>
+    </tr>
+          <td>Contraceña:</td>
+      <td><input type="password" name="contracena" required/></td>
+    </tr>
+    
+            <tr><meta http-equiv="refresh" content="">
+      <td><?php date_default_timezone_set('America/Bogota');
+			
+            
+					
+				echo date("Y-m-d H:i:s");	
+				
+			
+				?>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<input type="submit" value="registrar"/>
+</form>
+</center>
+</body>
+</html>
